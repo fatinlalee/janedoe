@@ -1,7 +1,24 @@
-<audio controls loop>
-        <source src="reze-janedoe.mp3" type="audio/mpeg">
-        เบราว์เซอร์ของคุณไม่รองรับการเล่นไฟล์เสียง
-    </audio>
+<script>
+    function handleFirstInteraction() {
+        var music = document.getElementById('background-music');
+
+        // ตรวจสอบว่าเพลงเริ่มเล่นแล้ว (เนื่องจาก autoplay muted)
+        if (music && music.paused === false) { 
+            
+            // ใช้ setTimeout เพื่อให้เบราว์เซอร์มีเวลาประมวลผลการเล่นก่อน
+            setTimeout(function() {
+                // 1. ตั้งระดับเสียงไปที่ 20% (0.2)
+                music.volume = 0.2; 
+                
+                // 2. เปิดเสียง (Unmute) เสียงจะเริ่มดังที่ 20% ทันที
+                music.muted = false; 
+            }, 50); // ดีเลย์ 50ms (ทำงานเร็วมากจนผู้ใช้ไม่รู้สึก)
+            
+            // ลบ Event Listener ออก เพื่อให้โค้ดทำงานแค่ครั้งเดียวเมื่อมีการคลิก
+            document.removeEventListener('click', handleFirstInteraction);
+        }
+    }
     
-</body>
-</html>
+    // ผูกฟังก์ชันเข้ากับเหตุการณ์การคลิกบนหน้าจอ
+    document.addEventListener('click', handleFirstInteraction);
+</script>
