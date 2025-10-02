@@ -1,23 +1,8 @@
-<script>
-    function handleFirstInteraction() {
-        var music = document.getElementById('background-music');
-
-        if (music && music.paused === false) { 
-            
-            // ใช้ setTimeout 100ms เพื่อให้เบราว์เซอร์ตั้งค่าเสียง 20% ก่อนเปิดเสียง
-            setTimeout(function() {
-                // 1. ตั้งระดับเสียงไปที่ 20% (0.2)
-                music.volume = 0.2; 
-                
-                // 2. เปิดเสียง (Unmute) เสียงจะเริ่มดังที่ 20% ทันที
-                music.muted = false; 
-            }, 100); // เปลี่ยนเป็นดีเลย์ 100ms
-            
-            // ลบ Event Listener ออก เพื่อให้โค้ดทำงานแค่ครั้งเดียวเมื่อมีการคลิก
-            document.removeEventListener('click', handleFirstInteraction);
-        }
-    }
+<html>
+<audio controls loop>
+        <source src="reze-janedoe.mp3" type="audio/mpeg">
+        เบราว์เซอร์ของคุณไม่รองรับการเล่นไฟล์เสียง
+    </audio>
     
-    // ผูกฟังก์ชันเข้ากับเหตุการณ์การคลิกบนหน้าจอ
-    document.addEventListener('click', handleFirstInteraction);
-</script>
+</body>
+</html>
